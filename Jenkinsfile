@@ -11,8 +11,7 @@ pipeline {
             steps {
                 script {
                   echo "terrafom action from the parameter is --> ${action}"
-                  sh '''#/bin/bash
-
+                  sh '''#!/bin/bash
                   if [ ${action} == "plan" ]; then
                     sh ('terraform ${action}')
                   elif [ ${action} == "destroy" ]; then
