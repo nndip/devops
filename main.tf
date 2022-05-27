@@ -39,7 +39,7 @@ resource "aws_nat_gateway" "nat" {
 
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.vpc.id
-  count                   = 2
+  count                   = 1
   cidr_block              = "10.10.6.0/24"
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
