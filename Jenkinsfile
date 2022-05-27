@@ -19,6 +19,7 @@ pipeline {
                 else
                   sh (terrafom ${action} --auto-approve)
                 fi
+                '''
             }
         }
     }
