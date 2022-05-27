@@ -15,9 +15,9 @@ pipeline {
                   if [ ${action} == "plan" ]; then
                     sh ('terraform ${action}');
                   elif [ ${action} == "destroy" ]; then
-                    sh (terraform ${action}');
+                    sh ('terraform ${action}');
                   else
-                    sh (terrafom ${action} --auto-approve);
+                    sh ('terrafom ${action} --auto-approve');
                   fi
                   '''
                 }
