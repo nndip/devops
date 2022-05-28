@@ -17,7 +17,7 @@ pipeline {
         stage('Terraform Action') {
             steps {
                 echo "terrafom action from the parameter is --> ${action}"
-                if [ ${acton} == "apply" ]; then
+                if ( ${acton} == "apply" ); then
                   sh ('terraform ${action} --auto-approve');
             }
         }
