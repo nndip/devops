@@ -9,17 +9,19 @@ pipeline {
 
         stage('Terraform Action') {
             steps {
-                echo "terrafom action from the parameter is --> ${action}"
-                sh ('terraform ${action}');
+                script {
+                  echo "terraform action from the parameter is --> ${action}"
+                  sh '''#!/bin/bash
+                  if [ actoion == "plan" ]; then
+                    sh ('terraform ${action}');
+                  elif [ action == "destroy" ]; then
+                    sh ('terrafom ${action}');
+                  else
+                    sh ('terraform ${action} --auto-approve');
+                  fi
+                  '''
+                }
             }
         }
-
-        // stage('Terraform other Action') {
-        //     steps {
-        //         echo "terrafom action from the parameter is --> ${action}"
-        //         sh ('terraform ${action} --auto-approve');
-        //     }
-        // }
-    }
-    
+    }     
 }
