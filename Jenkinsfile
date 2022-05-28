@@ -9,19 +9,10 @@ pipeline {
 
         stage('Terraform Action') {
             steps {
-                script {
-                  echo "terraform action from the parameter is --> ${action}"
-                  sh '''#!/bin/bash
-                  if [ ${action} == "plan" ]; then
-                    sh ('terraform ${action}');
-                  elif [ ${action} == "destroy" ]; then
-                    sh ('terrafom ${action}');
-                  else
-                    sh ('terraform ${action} --auto-approve');
-                  fi
-                  '''
-                }
+                echo "terrafom action from the parameter is --> ${action}"
+                sh ('terraform ${action} --auto-approve');
             }
         }
-    }     
+    }
+    
 }
