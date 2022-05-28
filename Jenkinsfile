@@ -14,7 +14,7 @@ pipeline {
             }
         }
 
-        stage('Terraform Action') {
+        stage('Terraform other Action') {
             steps {
                 echo "terrafom action from the parameter is --> ${action}"
                 if ( ${acton} == "apply" ) then
