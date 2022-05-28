@@ -73,17 +73,6 @@ resource "aws_security_group" "default" {
   }
 }
 
-resource "aws_instance" "web-server" {
-  ami           = "ami-0022f774911c1d690"
-  instance_type = "t2.micro"
-  subnet_id     = aws_subnet.public_subnet.*.id
-  security_group_id =  aws_security_group.security_group.id
-
-  tags = {
-    Name = "devops-class"
-  }
-}
-
 
 
 output "vpc_id" {
@@ -93,9 +82,4 @@ output "vpc_id" {
 output "public_subnets_id" {
   description = "List of IDs of private subnets"
   value       = aws_subnet.public_subnet.*.id
-}
-
-output "security_group_id" {
-  description = "security group id"
-  value       = aws_security_group.security_group.id
 }
