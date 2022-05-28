@@ -13,11 +13,11 @@ pipeline {
                   echo "terraform action from the parameter is --> ${action}"
                   sh '''#!/bin/bash
                   if [ ${action} == "plan" ]; then
-                    'terraform ${action}'
+                    sh 'terraform ${action}'
                   elif [ ${action} == "destroy" ]; then
-                    'terrafom ${action}'
+                    sh 'terrafom ${action}'
                   else
-                    'terraform apply --auto-approve'
+                    sh 'terraform apply --auto-approve'
                   fi
                   '''
                 }
