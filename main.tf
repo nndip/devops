@@ -77,7 +77,7 @@ resource "aws_instance" "web-server" {
   ami           = "ami-0022f774911c1d690"
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.public_subnet.*.id
-  aws_security_group = 
+  security_group_id =  aws_security_group.security_group.id
 
   tags = {
     Name = "devops-class"
