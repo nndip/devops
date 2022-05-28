@@ -9,7 +9,7 @@ resource "aws_vpc" "vpc" {
   enable_dns_hostnames = true
   enable_dns_support   = true
   tags = {
-    Name        = "class-vpc"
+    Name        = "devops-vpc"
     Environment = "dev"  }
 }
 
@@ -17,7 +17,7 @@ resource "aws_vpc" "vpc" {
 resource "aws_internet_gateway" "ig" {
   vpc_id = aws_vpc.vpc.id
   tags = {
-    Name        = "class-igw"
+    Name        = "devops-igw"
     Environment = "dev"
   }
 }
@@ -32,7 +32,7 @@ resource "aws_nat_gateway" "nat" {
   subnet_id     = element(aws_subnet.public_subnet.*.id, 0)
   depends_on    = [aws_internet_gateway.ig]
   tags = {
-    Name        = "nat"
+    Name        = "devops-nat"
     Environment = "dev"
   }
 }
@@ -44,10 +44,36 @@ resource "aws_subnet" "public_subnet" {
   availability_zone       = "us-east-1a"
   map_public_ip_on_launch = true
   tags = {
-    Name        = "sub-${count.index+1}-public-subnet"
+    Name        = "devops-public-subnet"
     Environment = "dev"
   }
 }
+
+resource "aws_security_group" "default" {
+  name        = "devops-sg"
+  description = "class security group to allow inbound/outbound from the VPC"
+  vpc_id      = aws_vpc.vpc.id
+  depends_on  = [aws_vpc.vpc]
+  ingress {
+    from_port = "443"
+    to_port   = "443"
+    protocol  = "-1"
+    self      = true
+  }
+  
+  egress {
+    from_port = "0"
+    to_port   = "0"
+    protocol  = "-1"
+    self      = "true"
+  }
+  tags = {
+    Name = "devops-sg"
+    Environment = "dev"
+  }
+}
+
+
 
 
 output "vpc_id" {
