@@ -3,7 +3,4 @@
 
 1) Engine
 2) Tire - paco
-3  boot
-4) Bumper- patrick
-5) brake && brake pad
-
+3) windshield - paco
