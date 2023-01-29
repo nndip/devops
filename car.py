@@ -6,4 +6,4 @@
 3  boot
 4) Bumper- patrick
 5) brake && brake pad
-
+6  clutch
