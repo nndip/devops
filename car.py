@@ -6,4 +6,5 @@
 3  boot
 4) Bumper- patrick
 5) brake && brake pad
-chair
+6)chair
+7) head light
